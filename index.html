@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习jQuery</title>
+    <script src="jquery/jquery-3.3.1.min.js">
+    </script>
+</head>
+<body >
+    <h1 class="test">this is a paragraphy</h1>
+    <p id ="test">this is a paragraphy</p>
+    <p class="test">this is a paragraphy</p>
+    <a href="blog_home.html">播客主页</a><br>
+    <button class="hide_all_p">隐藏所有p元素</button><br>
+    <button id="hide">toggle按钮</button>
+    <div id="ex" style="background-color: lightgreen;padding: 20px">
+        <p>
+            姓名：叶颖琪<br>
+            性别：女<br>
+            地址：丽水市区
+        </p>
+    </div>
+    <button class="fadeToggle">fadeToggle</button><button class="fadeTo">fadeTo</button>
+    <div id="ex2" style="background-color: lightgreen;padding: 20px">
+        <h4>实现淡入淡出</h4>
+        <p>
+            姓名：叶颖琪<br>
+            性别：女<br>
+            地址：丽水市区
+        </p>
+    </div>
+    <button id="animate">开始动画</button>
+    <div id="ex3" style="background-color: lightgreen;padding: 20px;position: absolute;width: 100%">
+        <h4>实现动画</h4>
+        <p>
+            姓名：叶颖琪<br>
+            性别：女<br>
+            地址：丽水市区
+        </p>
+    </div>
+    <div id="ex4" style="background-color: lightgreen;padding: 20px;position: absolute;width: 100%">
+        <h4>实现滑动</h4>
+        <p>
+            姓名：叶颖琪<br>
+            性别：女<br>
+            地址：丽水市区
+        </p>
+    </div>
+    <script>
+        $(document).ready(function init() {
+            $('p').css("color","red");
+            $('[href]').css('font-size','25px');             //属性选择器
+
+            $('#hide').click(function hide() {
+                $('#ex').toggle('slow',function show_success() {
+                    //alert("点击按钮回复隐藏元素")
+                });
+            })
+            //实现淡入淡出
+            $('.fadeToggle').click(function fade() {
+                //alert("开始淡入淡出");
+                $('#ex2').fadeToggle('slow');
+            })
+            $('.fadeTo').click(function fade() {
+                //alert("开始淡入淡出");
+                $('#ex2').fadeTo('slow',0.2);
+            })
+            //实现动画
+            $('#animate').click(function animate() {
+               // alert('开始动画');
+                $('#ex3').animate({top:'700px',left:'300px',opacity:'0.5'},'slow')
+            })
+            $('.hide_all_p').click(function hide() {
+                $('p').hide(2000);
+            })
+        })
+
+    </script>
+</body>
+</html>
