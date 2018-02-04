@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>学习jQuery</title>
+    <style>
+        #flip{
+
+            text-align: center;
+            padding-bottom: 100px;
+            padding-top: 100px;
+            color: black;
+        }
+        #flip_div{
+            text-align: center;
+            background-color: green;
+        }
+    </style>
     <script src="jquery/jquery-3.3.1.min.js">
     </script>
 </head>
@@ -13,7 +26,7 @@
     <a href="blog_home.html">播客主页</a><br>
     <button class="hide_all_p">隐藏所有p元素</button><br>
     <button id="hide">toggle按钮</button>
-    <div id="ex" style="background-color: lightgreen;padding: 20px">
+    <div id="ex" style="background-color: lightgreen;width: 100%">
         <p>
             姓名：叶颖琪<br>
             性别：女<br>
@@ -21,7 +34,7 @@
         </p>
     </div>
     <button class="fadeToggle">fadeToggle</button><button class="fadeTo">fadeTo</button>
-    <div id="ex2" style="background-color: lightgreen;padding: 20px">
+    <div id="ex2" style="background-color: lightgreen;width: 100%">
         <h4>实现淡入淡出</h4>
         <p>
             姓名：叶颖琪<br>
@@ -30,7 +43,7 @@
         </p>
     </div>
     <button id="animate">开始动画</button>
-    <div id="ex3" style="background-color: lightgreen;padding: 20px;position: absolute;width: 100%">
+    <div id="ex3" style="background-color: lightgreen;position: absolute;width: 100%">
         <h4>实现动画</h4>
         <p>
             姓名：叶颖琪<br>
@@ -38,14 +51,13 @@
             地址：丽水市区
         </p>
     </div>
-    <div id="ex4" style="background-color: lightgreen;padding: 20px;position: absolute;width: 100%">
-        <h4>实现滑动</h4>
-        <p>
-            姓名：叶颖琪<br>
-            性别：女<br>
-            地址：丽水市区
-        </p>
+    <div style="position: absolute">
+        <button id="stop">停止滑动</button>
+
+        <div id="flip_div">Hello World</div>
+        <div id="flip">点击此处，开始滑动</div>
     </div>
+
     <script>
         $(document).ready(function init() {
             $('p').css("color","red");
