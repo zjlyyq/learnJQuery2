@@ -5,15 +5,20 @@
     <title>学习jQuery</title>
     <style>
         #flip{
+            background-color: green;
+            width: 100%;
+            text-align: center;
 
+            color: black;
+            text-align: center;
+        }
+        #panel{
+            width: 100%;
             text-align: center;
             padding-bottom: 100px;
             padding-top: 100px;
-            color: black;
-        }
-        #flip_div{
-            text-align: center;
-            background-color: green;
+            background-color: greenyellow;
+            display: none;
         }
     </style>
     <script src="jquery/jquery-3.3.1.min.js">
@@ -50,13 +55,18 @@
             性别：女<br>
             地址：丽水市区
         </p>
+        <div style="">
+            <button id="stop">停止滑动</button>
+            <div id="flip">点击此处，开始滑动</div>
+            <div id="panel">HelloWorld</div>
+        </div>
+        <div >
+            Name:
+            <input id="name" type="text">
+            <button id="getNameValue">获得name字段的值</button>
+        </div>
     </div>
-    <div style="position: absolute">
-        <button id="stop">停止滑动</button>
 
-        <div id="flip_div">Hello World</div>
-        <div id="flip">点击此处，开始滑动</div>
-    </div>
 
     <script>
         $(document).ready(function init() {
@@ -84,6 +94,17 @@
             })
             $('.hide_all_p').click(function hide() {
                 $('p').hide(2000);
+            })
+            $('#flip').click(function () {
+                $('#panel').slideDown(5000,function () {
+                    alert('展示完成，点击确定收起')
+                }).slideUp(5000);
+            })
+            $('#stop').click(function () {
+                $('#panel').stop();
+            })
+            $('#getNameValue').click(function () {
+                alert($('name').val());
             })
         })
 
