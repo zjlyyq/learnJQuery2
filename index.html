@@ -66,9 +66,32 @@
             <button id="getNameValue">获得name字段的值</button>
         </div>
     </div>
-
+    <div class="articles" style="position: relative ;top: 300px;">
+        <button id="detach">删除所有元素</button>
+        <div class="article" id="article">
+            <h2>复审版日记</h2>
+            <p>正文</p>
+        </div>
+        <div class="article" id="articles2">
+            <h2>复审版日记2</h2>
+            <p id="zhenwen2">正文</p>
+            <button class="edit_bt">Edit</button>
+            <input type="text" id="edit_val" class="edit_val" onfocus="onfoc()">
+        </div>
+    </div>
+    <div style="position: relative ;top: 300px;">
+        <p id="text1">这是<b>粗体</b>文本</p>
+        <p id="text2">这是另一段<b>粗体</b>文本</p>
+        <button id="btn1">显示新/旧文本</button>
+        <button id="btn2">显示新/旧Html</button>
+    </div>
 
     <script>
+        function onfoc() {
+            x = document.getElementById('edit_val')
+            alert(x.innerText)
+            x.innerText = ''
+        }
         $(document).ready(function init() {
             $('p').css("color","red");
             $('[href]').css('font-size','25px');             //属性选择器
@@ -105,6 +128,27 @@
             })
             $('#getNameValue').click(function () {
                 alert($('name').val());
+            })
+            $('.edit_val').val('请输入...')
+
+            $('.edit_bt').click(function () {
+                //设置初始值
+                text = $('.edit_val').val()
+                $('#zhenwen2').text(text)
+            })
+            $('#articles2').after("<p>添加一句话</p>")
+            $('#detach').click(function () {
+                $('.articles').detach();
+            })
+            $('#btn1').click(function () {
+                $('#text1').text(function (i,origText) {
+                    return '旧文本：'+origText  + '  新文本' + 'hello world'+'  index[' + i + ']'
+                })
+            })
+            $('#btn2').click(function () {
+                $('#text2').html(function (i,origText) {
+                    return '旧文本：'+origText  + '  新文本' + 'hello <b>world</b>'+'  index[' + i + ']'
+                })
             })
         })
 
