@@ -69,11 +69,11 @@
     <div class="articles" style="position: relative ;top: 300px;">
         <button id="detach">删除所有元素</button>
         <div class="article" id="article">
-            <h2>复审版日记</h2>
+            <h2 class="h2">复审版日记</h2>
             <p>正文</p>
         </div>
         <div class="article" id="articles2">
-            <h2>复审版日记2</h2>
+            <h2 class="h2">复审版日记2</h2>
             <p id="zhenwen2">正文</p>
             <button class="edit_bt">Edit</button>
             <input type="text" id="edit_val" class="edit_val" onfocus="onfoc()">
@@ -84,6 +84,7 @@
         <p id="text2">这是另一段<b>粗体</b>文本</p>
         <button id="btn1">显示新/旧文本</button>
         <button id="btn2">显示新/旧Html</button>
+        <button id="main_bt">测试复杂函数</button>
     </div>
 
     <script>
@@ -136,7 +137,14 @@
                 text = $('.edit_val').val()
                 $('#zhenwen2').text(text)
             })
-            $('#articles2').after("<p>添加一句话</p>")
+            $('#articles2').after(" <div class=\"article\" id=\"article4\">\n" +
+                "            <h2>用after添加</h2>\n" +
+                "            <p>正文</p>\n" +
+                "        </div>")
+            $('#articles2').append('<div class="article" id="article3">\n' +
+                '            <h2>用append添加</h2>\n' +
+                '            <p>正文</p>\n' +
+                '        </div>')
             $('#detach').click(function () {
                 $('.articles').detach();
             })
@@ -149,6 +157,15 @@
                 $('#text2').html(function (i,origText) {
                     return '旧文本：'+origText  + '  新文本' + 'hello <b>world</b>'+'  index[' + i + ']'
                 })
+            })
+            $('#main_bt').click(function () {
+                x = document.getElementsByClassName('article')
+                for(i = 0;i < 4;i ++){
+                    var y = x[i].getElementsByClassName('h2')
+                    if (y[0].innerText == '复审版日记2'){
+                        alert(i)
+                    }
+                }
             })
         })
 
