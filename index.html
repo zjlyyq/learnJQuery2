@@ -161,6 +161,7 @@
                 return '旧文本：'+origText  + '  新文本' + 'hello <b>world</b>'+'  index[' + i + ']'
             })
         })
+        /*
         $('#main_bt').click(function () {
             x = document.getElementsByClassName('article')
             for(i = 0;i < 4;i ++){
@@ -169,6 +170,17 @@
                     alert(i)
                 }
             }
+        })*/
+        $('#main_bt').click(function () {
+            var i = 0
+            $('.article').each(function () {
+                alert(i ++)
+                alert($(this).find('h2').text())
+                if ($(this).find('h2').find('h2').text() == '复审版日记2'){
+                    alert($(this).find('h2').text())
+                    alert($(this).html())
+                }
+            })
         })
         $('p').css({"color":"blue","border":"solid","border-color":"black","padding":"5px"})
         $('#show_window').click(function () {
@@ -177,7 +189,11 @@
             alert(txt)
         })
         //找到所有段落，并将它们添加到一个div内，并设为黑色
-        $("#merge").add('p')
+        $("#merge").add("h2")
+        //给所有段落绑定点击事件
+        $('p').bind('click',function (e) {
+            $(e.target).css("background-color",'red')
+        })
     })
 </script>
 </body>
